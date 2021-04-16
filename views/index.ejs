@@ -10,6 +10,19 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+		
+		<style>
+			body {
+		background: #f7f7f7 url("assets/images/bg01.png");
+	}
+			</style>
 	</head>
 	<body class="is-preload">
 		<div id="page-wrapper">
@@ -18,34 +31,42 @@
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="index.html" id="logo">Parked <em>by ZCoded</em></a></h1>
+						<h1><a href="/" id="logo">Parked <em>by ZCoded</em></a></h1>
 
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li class="current"><a href="index.html">Home</a></li>
+								<li class="current"><a href="/">Home</a></li>
 								<li>
-									<a href="#">Dropdown</a>
+									<!-- <a href="#">Dropdown</a>
 									<ul>
 										<li><a href="#">Playground</a></li>
 										<li><a href="#"> Park</a></li>
 										<li><a href="#">Trails</a></li>
 										<li><a href="#">Skate parks</a></li>
 										<li><a href="#">Dog parks</a></li>
-										<li><a href="#">Water Parks</a></li>
+										<li><a href="#">Water Parks</a></li> -->
 										<!-- <li><a href="#">Etiam nisl</a></li> -->
 										<!-- <li><a href="#">Veroeros feugiat</a></li> -->
 						
 										
-										<li><a href="#">Veroeros feugiat</a></li>
-									</ul>
+										<!-- <li><a href="#">Veroeros feugiat</a></li> -->
+									<!-- </ul> -->
 								</li>
 								<!-- <li><a href="left-sidebar.html">Left Sidebar</a></li> -->
 								<!-- <li><a href="right-sidebar.html">Right Sidebar</a></li> -->
 								<!-- <li><a href="two-sidebar.html">Two Sidebar</a></li> -->
 								<!-- <li><a href="no-sidebar.html">No Sidebar</a></li> -->
 							</ul>
-							<input>location</input>
+							location<select id="states">
+								<option>Choose a state</option>
+								<option>California</option>
+								<option>massachusetts</option>
+								<option>Pennsylvania</option>
+							
+							
+							</select>
+							<!-- <button>Parked</button> -->
 						</nav>
 
 				</div>
@@ -103,7 +124,7 @@
 						<div class="row">
 							<section class="col-6 col-12-narrower">
 								<div class="box post">
-									<a href="#" class="image left"><img src="images/pic01.jpg" alt="" /></a>
+									<a href="#" class="image left"><img src="assets/images/pic01.jpg" alt="" /></a>
 									<div class="inner">
 										<h3>The First Thing</h3>
 										<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
@@ -112,7 +133,7 @@
 							</section>
 							<section class="col-6 col-12-narrower">
 								<div class="box post">
-									<a href="#" class="image left"><img src="images/pic02.jpg" alt="" /></a>
+									<a href="#" class="image left"><img src="assets/images/pic02.jpg" alt="" /></a>
 									<div class="inner">
 										<h3>The Second Thing</h3>
 										<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
@@ -123,7 +144,7 @@
 						<div class="row">
 							<section class="col-6 col-12-narrower">
 								<div class="box post">
-									<a href="#" class="image left"><img src="images/pic03.jpg" alt="" /></a>
+									<a href="#" class="image left"><img src="assets/images/pic03.jpg" alt="" /></a>
 									<div class="inner">
 										<h3>The Third Thing</h3>
 										<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
@@ -132,7 +153,7 @@
 							</section>
 							<section class="col-6 col-12-narrower">
 								<div class="box post">
-									<a href="#" class="image left"><img src="images/pic04.jpg" alt="" /></a>
+									<a href="#" class="image left"><img src="assets/images/pic04.jpg" alt="" /></a>
 									<div class="inner">
 										<h3>The Fourth Thing</h3>
 										<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
@@ -150,6 +171,9 @@
 							<h2>Are you ready to continue your quest?</h2>
 							<a href="#" class="button">Insert Coin</a>
 						</header>
+					</div>
+					<div id="mapid">
+
 					</div>
 				</section>
 
@@ -204,7 +228,7 @@
 							</section>
 						</div>
 					</div>
-
+					
 					<!-- Icons -->
 						<ul class="icons">
 							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -232,6 +256,12 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/PlaygroundsWithZip.js"></script>
+			<script src="main.js"></script>
+			
+			<!-- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script> -->
 
 	</body>
 </html>
