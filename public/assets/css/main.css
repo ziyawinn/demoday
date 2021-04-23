@@ -5,6 +5,12 @@
 /* leaflet files (me:ziya) */
 #mapid { height: 450px; }
 
+/* ziya work */
+.hide{
+	
+	display: none;
+}
+
 /*
 	Arcana by HTML5 UP
 	html5up.net | @ajlkn

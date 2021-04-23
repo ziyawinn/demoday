@@ -10,10 +10,11 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
    crossorigin=""/>
-   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
 
@@ -57,16 +58,19 @@
 								<!-- <li><a href="right-sidebar.html">Right Sidebar</a></li> -->
 								<!-- <li><a href="two-sidebar.html">Two Sidebar</a></li> -->
 								<!-- <li><a href="no-sidebar.html">No Sidebar</a></li> -->
+								
 							</ul>
-							location<select id="states">
-								<option>Choose a state</option>
+							
+							<select id="states">
+								<!-- <option>Choose a state</option>
 								<option>California</option>
 								<option>massachusetts</option>
 								<option>Pennsylvania</option>
+							 -->
+							 <input id="input">Zip Code</input>
 							
-							
-							</select>
-							<!-- <button>Parked</button> -->
+							</select> 
+							 <button id="button">Parked</button> -->
 						</nav>
 
 				</div>
@@ -78,7 +82,36 @@
 						<a href="#" class="button">Learn More</a>
 					</header>
 				</section>
+				<section>
+					<div id="mapid">
 
+					</div>
+
+				</section>
+				
+				<!-- Gigantic Heading -->
+				<section class="wrapper style2">
+					<div class="container">
+					<header class="major">
+						<h2>Parks around you</h2>
+
+					</header>
+					</div>
+				</section>
+
+			<!-- <form action="/messages" method="POST"> -->
+				<input id="pComment"  type="text" name= "comments">
+				<select id="pSelect" class="pSelection" name= "selection"></select>
+				<button id="go">submit</button>
+			<!-- </form> --> -->
+					
+				<section id="nameparks">
+<!-- 				
+					<div class=opinion>
+					<i class="fas fa-thumbs-up"></i>
+					<i class="fas fa-thumbs-down"></i>
+					</div> -->
+				</section>
 			<!-- Highlights -->
 				<section class="wrapper style1">
 					<div class="container">
@@ -109,14 +142,14 @@
 				</section>
 
 			<!-- Gigantic Heading -->
-				<section class="wrapper style2">
+				<!-- <section class="wrapper style2">
 					<div class="container">
 						<header class="major">
 							<h2>Parks around you</h2>
 							<p></p>
 						</header>
 					</div>
-				</section>
+				</section> -->
 
 			<!-- Posts -->
 				<section class="wrapper style1">
@@ -172,9 +205,9 @@
 							<a href="#" class="button">Insert Coin</a>
 						</header>
 					</div>
-					<div id="mapid">
+					<!-- <div id="mapid">
 
-					</div>
+					</div> -->
 				</section>
 
 			<!-- Footer -->
@@ -256,12 +289,9 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script src="assets/js/PlaygroundsWithZip.js"></script>
-			<script src="main.js"></script>
+			<script src="assets/js/PlaygroundsWithZip.js"></script> 
+		 	<script src="main.js"></script>
+			<script src="assets/js/comment-data.js"></script>
 			
-			<!-- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-   crossorigin=""></script> -->
-
 	</body>
 </html>

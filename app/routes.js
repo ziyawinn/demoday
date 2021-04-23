@@ -1,3 +1,5 @@
+const { reduce, repeat } = require("lodash");
+
 module.exports = function (app, passport, db) {
   // normal routes ===============================================================
 
@@ -7,17 +9,29 @@ module.exports = function (app, passport, db) {
   });
 
   // PROFILE SECTION =========================
-  app.get("/profile", isLoggedIn, function (req, res) {
-    db.collection("messages")
-      .find()
-      .toArray((err, result) => {
-        if (err) return console.log(err);
-        res.render("profile.ejs", {
-          user: req.user,
-          messages: result,
+  // app.get("/", isLoggedIn, function (req, res) {
+  //   db.collection("messages")
+  //     .find()
+  //     .toArray((err, result) => {
+  //       console.log(result);
+  //       if (err) return console.log(err);
+  //       res.render("index.ejs", {
+         
+  //         messages: result,
+  //       });
+  //     });
+  // });
+
+    // PROFILE SECTION =========================
+    app.get("/getMessages", isLoggedIn, function (req, res) {
+      db.collection("messages")
+        .find()
+        .toArray((err, result) => {
+          if (err) return console.log(err);
+          // send to main js all the messages as result
+          res.send(result)
         });
-      });
-  });
+    });
 
   // LOGOUT ==============================
   app.get("/logout", function (req, res) {
@@ -27,15 +41,24 @@ module.exports = function (app, passport, db) {
 
   // message board routes ===============================================================
 
+
   app.post("/messages", (req, res) => {
+   console.log("req",req)
+   if (req.body.comments && req.body.selection){
     db.collection("messages").save(
-      { name: req.body.name, msg: req.body.msg, thumbUp: 0, thumbDown: 0 },
+      { comments: req.body.comments, selection: req.body.selection },
       (err, result) => {
         if (err) return console.log(err);
+        // res.send("sendToDataBase");
         console.log("saved to database");
-        res.redirect("/profile");
+        //  res.redirect("/")
+        res.sendStatus(200)
       }
+      
     );
+
+   }
+    
   });
 
   app.put("/messages", (req, res) => {
@@ -69,34 +92,34 @@ module.exports = function (app, passport, db) {
   // =============================================================================
   // GET STATE PARK DATA ==================================================
   // =============================================================================
-  app.get("/pennsylvania-playGrounds", isLoggedIn, function (req, res) {
-    db.collection("pennsylvaniaParkData")
-      .find()
-      .toArray((err, result) => {
-        console.log(result);
-        if (err) return console.log(err);
-        res.render("park.ejs", { parkData: result });
-      });
-  });
+  // app.get("/pennsylvania-playGrounds", isLoggedIn, function (req, res) {
+  //   db.collection("pennsylvaniaParkData")
+  //     .find()
+  //     .toArray((err, result) => {
+  //       console.log(result);
+  //       if (err) return console.log(err);
+  //       res.render("park.ejs", { parkData: result });
+  //     });
+  // });
 
-  app.get("/massachusetts-park-data", isLoggedIn, function (req, res) {
-    db.collection("massachusettsParkData")
-      .find()
-      .toArray((err, result) => {
-        console.log(result);
-        if (err) return console.log(err);
-        res.render("park.ejs", { parkData: result })
-      });
-  });
-  app.get("/california-park-data", isLoggedIn, function (req, res) {
-    db.collection("californiaParkData")
-      .find()
-      .toArray((err, result) => {
-        console.log(result);
-        if (err) return console.log(err);
-        res.render("park.ejs", { parkData: result })
-      });
-  });
+  // app.get("/massachusetts-park-data", isLoggedIn, function (req, res) {
+  //   db.collection("massachusettsParkData")
+  //     .find()
+  //     .toArray((err, result) => {
+  //       console.log(result);
+  //       if (err) return console.log(err);
+  //       res.render("park.ejs", { parkData: result })
+  //     });
+  // });
+  // app.get("/california-park-data", isLoggedIn, function (req, res) {
+  //   db.collection("californiaParkData")
+  //     .find()
+  //     .toArray((err, result) => {
+  //       console.log(result);
+  //       if (err) return console.log(err);
+  //       res.render("park.ejs", { parkData: result })
+  //     });
+  // });
 
   // =============================================================================
   // AUTHENTICATE (FIRST LOGIN) ==================================================
